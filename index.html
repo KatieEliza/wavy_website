@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curves, Waves, and Blobs</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;400;900&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+
+  <style>
+    h1 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    body {
+      margin: 0;
+      font-family: 'Prompt', sans-serif;
+      color: white;
+      background: #202731;
+      overflow-x: hidden;
+    }
+
+    section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 400px;
+      padding-top: 100px;
+    }
+
+    .blue {
+      background: #3c31dd;
+    }
+
+    .red {
+      background: #dd3f31;
+    }
+
+    .pink {
+      background: #ff0066;
+      overflow: hidden;
+    }
+
+    .dark {
+      background: #0f0f10;
+    }
+
+    .curve {
+      position: absolute;
+      height: 250px;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+    }
+
+    .curve::before {
+      content: '';
+      display: block;
+      position: absolute;
+      border-radius: 100% 50%;
+      width: 55%;
+      height: 100%;
+      transform: translate(85%, 60%);
+      background-color: hsl(216, 21%, 16%);
+    }
+
+    .curve::after {
+      content: '';
+      display: block;
+      position: absolute;
+      border-radius: 100% 50%;
+      width: 55%;
+      height: 100%;
+      background-color: #3c31dd;
+      transform: translate(-4%, 40%);
+      z-index: -1;
+    }
+
+    .bubble::after {
+      content: '';
+      border-top-left-radius: 50% 100%;
+      border-top-right-radius: 50% 100%;
+      position: absolute;
+      bottom: 0;
+      z-index: -1;
+      width: 100%;
+      background-color: #0f0f10;
+      height: 85%;
+    }
+
+    .wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .wave svg {
+      position: relative;
+      display: block;
+      width: calc(103% + 1.3px);
+      height: 262px;
+    }
+
+    .wave .shape-fill {
+      fill: hsl(240, 3%, 6%);
+    }
+
+    .spacer {
+      aspect-ratio: 960/300;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .layer1 {
+      background-image: url('./layered-waves-haikei.svg');
+    }
+    .layer2 {
+      background-image: url('./wwwaves.svg');
+    }
+
+    .flip {
+      transform: rotate(180deg);
+    }
+
+    .blob-motion {
+        position: absolute;
+        transform: translateY(-20%);
+        z-index: 0;
+      }
+
+      .blob-content {
+        z-index: 1;
+      }
+
+      .blobs {
+        width: 100%;
+        background: url('./blobs.svg') no-repeat bottom / cover;
+      }
+  </style>
+</head>
+<body>
+  <section class="blue">
+    <h1>Nice Curves!</h1>
+    <p>A website is like a road. The more curves it has the more interesting it is.</p>
+    <div class="curve"></div>
+  </section>
+
+  <section>
+    <h1>Nice Curves!</h1>
+    <p>A website is like a road. The more curves it has the more interesting it is.</p>
+  </section>
+
+  <section class="bubble">
+    <h1>Nice Curves!</h1>
+    <p>A website is like a road. The more curves it has the more interesting it is.</p>
+  </section>
+
+  <section class="dark">
+    <h1>Nice Curves!</h1>
+    <p>A website is like a road. The more curves it has the more interesting it is.</p>
+  </section>
+
+  <section class="red">
+    <h1>Nice Curves!</h1>
+    <p>A website is like a road. The more curves it has the more interesting it is.</p>
+
+    <div class="wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill"
+          ></path>
+      </svg>
+    </div>
+  </section>
+
+  <div class="spacer layer1"></div>
+
+  <section>
+    <h1>Nice Curves!</h1>
+    <p>A website is like a road. The more curves it has the more interesting it is.</p>
+  </section>
+
+  <div class="spacer layer2 flip"></div>
+
+  <section class="pink">
+    <div class="blob-content">
+      <h1>Nice Curves!</h1>
+      <p>A website is like a road. The more curves it has the more interesting it is.</p>
+    </div>
+
+      <svg 
+      class="blob-motion"
+      id="visual" 
+      viewBox="0 0 960 540" 
+      width="960" 
+      height="540" 
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" 
+      version="1.1"
+      >
+        <g transform="translate(473.55428094080264 133.02914190813698)">
+          <path 
+          id="blob1"
+            d="M58.3 -57C78 -38.7 98 -19.3 101.4 3.4C104.8 26.2 91.7 52.3 72 76.2C52.3 100 26.2 121.5 -4.6 126.1C-35.4 130.7 -70.7 118.4 -83.2 94.5C-95.7 70.7 -85.4 35.4 -77.8 7.5C-70.3 -20.3 -65.5 -40.5 -53 -58.9C-40.5 -77.2 -20.3 -93.6 -0.5 -93.1C19.3 -92.7 38.7 -75.3 58.3 -57"
+            fill="#BB004B"
+            ></path>
+          </g>
+        <g transform="translate(481.4777724215015 143.84822889021507)" style="visibility: hidden">
+          <path 
+          id="blob2"
+          d="M55 -59.5C74.7 -35.4 96.3 -17.7 105.2 8.8C114 35.4 110 70.7 90.4 94C70.7 117.4 35.4 128.7 1.4 127.3C-32.5 125.9 -65.1 111.7 -86.2 88.4C-107.4 65.1 -117.2 32.5 -110.5 6.7C-103.8 -19.1 -80.5 -38.2 -59.4 -62.4C-38.2 -86.5 -19.1 -115.8 -0.7 -115.1C17.7 -114.3 35.4 -83.7 55 -59.5" 
+          fill="#BB004B"
+          ></path>
+        </g>
+      </svg>
+
+<script>
+  const tween = KUTE.fromTo(
+    '#blob1',
+    { path: '#blob1' },
+    { path: '#blob2' },
+    { repeat: 999, duration: 3000, yoyo: true }
+  ).start();
+</script>
+</section>
+
+  <div class="spacer layer2"></div>
+
+</body>
+</html>
